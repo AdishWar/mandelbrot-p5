@@ -2,9 +2,10 @@
 
 function setup() {
     //pixelDensity(1);
-    createCanvas(windowHeight,windowHeight);
+    // createCanvas(windowHeight,windowHeight);
+    createCanvas(windowWidth,windowWidth);
     // createCanvas(screen.width, screen.height);
-    // createCanvas(500,300);
+    // createCanvas(650,650);
     // createCanvas(360,360);
     pixelDensity(1);
     noStroke();
@@ -54,10 +55,16 @@ function draw() {
                 n++;
             }
 
-            bright = map(n, 0, maxIter, 0, 255);
+            bright = map(n, 0, maxIter, 0, 1);
+            bright = map(sqrt(bright), 0, 1, 0, 255);
+            
             // if(n == 100) {
             //     bright = 255;
             // }
+
+            if (n == maxIter) {
+                bright = 0;
+            }
 
             pixel(x,y, [bright,bright,bright]);
         }
